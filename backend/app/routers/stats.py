@@ -18,6 +18,7 @@ def summary(db: Session = Depends(get_db)):
         status: db.query(models.Appointment).filter(models.Appointment.status == status).count()
         for status in models.AppointmentStatus
     }
+    #hollaaaa
     cancelled = counts[models.AppointmentStatus.cancelled]
     rate = round((cancelled / total) * 100, 1) if total else 0.0
     return schemas.SummaryStats(
